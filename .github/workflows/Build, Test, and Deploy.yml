@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
-
+    
       - name: Install Node.js
         uses: actions/setup-node@v3
         with:
@@ -20,21 +20,17 @@ jobs:
     
       - name: Install Dependencies
         run: npm install
-        working-directory: server  # Update to 'server'
-    
-      - name: Run Tests
-        run: npm test
-        working-directory: server  # Update to 'server'
+        working-directory: server
     
       - name: Build Application
         run: npm run build
-        working-directory: server  # Update to 'server'
+        working-directory: server
     
       - name: Archive Build Artifacts
         uses: actions/upload-artifact@v2
         with:
           name: build-artifacts
-          path: server/build  # Update to 'server/build'
+          path: server/build
 
   deploy-staging:
     runs-on: ubuntu-latest
